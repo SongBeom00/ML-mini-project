@@ -1,0 +1,18 @@
+# config/config.yaml
+project_name: "Deepfake_Detection"
+device: "mps"
+
+model:
+  name: "efficientnet_b0"
+  save_path: "./model/model.pt"
+
+data:
+  train_root: "./train_data"
+  img_size: [224, 224]
+  train_ratio: 0.8
+
+train:
+  batch_size: 64
+  epochs: 20
+  learning_rate: 0.001
+  num_workers: 8
