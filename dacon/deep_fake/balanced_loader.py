@@ -119,7 +119,7 @@ class RatioBatchSampler(Sampler[List[int]]):
 class VideoClassifier(nn.Module):
     def __init__(self, num_classes: int = 2) -> None:
         super().__init__()
-        backbone = resnet18(weights=None)
+        backbone = resnet18(weights=models.ResNet18_Weights.DEFAULT)
         self.backbone = backbone
         feat_dim = backbone.fc.in_features
         backbone.fc = nn.Identity()
