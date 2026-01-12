@@ -32,7 +32,8 @@ class IntegratedDataset(Dataset):
             # 동영상은 랜덤하게 1프레임만 추출 (학습 효율 증대)
             cap = cv2.VideoCapture(file_path)
             total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-            cap.set(cv2.CAP_PROP_POS_FRAMES, np.random.randint(0, total_frames))
+            if total_frames > 0:
+                cap.set(cv2.CAP_PROP_POS_FRAMES, np.random.randint(0, total_frames))
             ret, frame = cap.read()
             cap.release()
             if not ret: frame = np.zeros((224, 224, 3), dtype=np.uint8)
